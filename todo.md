@@ -4,4 +4,7 @@
 * [x] ```GOPATH/GOBIN/GOROOT``` настроены
 * [x] PostgreSQL установлен
     * [x] Роль для учетки создана
-* [ ] DBeaver установлен
+* [x] DBeaver установлен (точнее ```dbeaver-ce```)
+    * [x] Попробовал подключиться к ```PostgreSQL```
+* [x] Insomnia установлен
+
