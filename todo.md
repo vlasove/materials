@@ -12,7 +12,7 @@
 * [x] http://golang-book.ru/ [link](https://github.com/vlasove/materials/tree/master/gobook)
     * Ресурс ни о чем 
 * [ ] https://quii.gitbook.io/learn-go-with-tests/
-* [ ] Tour of Go
+* [ ] Нужно что-то по горутинам отдельным блоком
 * [ ] API https://www.youtube.com/watch?v=LxJLuW5aUDQ&list=PLehOyJfJkFkJ5m37b4oWh783yzVlHdnUH
 
 
