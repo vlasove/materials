@@ -2,7 +2,12 @@ package helper
 
 import "fmt"
 
+const englishHelloPrefix = "Hello"
+
 // Hello function ...
 func Hello(name string) string {
-	return fmt.Sprintf("Hello, %s!", name)
+	if name == "" {
+		name = "World"
+	}
+	return fmt.Sprintf("%s, %s!", englishHelloPrefix, name)
 }
