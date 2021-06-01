@@ -9,9 +9,10 @@
 * [x] Insomnia установлен
 
 ### Шаг 2. По общим ссылкам
-* [ ] http://golang-book.ru/
-* [ ] Tour of Go
+* [x] http://golang-book.ru/ [link](https://github.com/vlasove/materials/tree/master/gobook)
+    * Ресурс ни о чем 
 * [ ] https://quii.gitbook.io/learn-go-with-tests/
+* [ ] Tour of Go
 * [ ] API https://www.youtube.com/watch?v=LxJLuW5aUDQ&list=PLehOyJfJkFkJ5m37b4oWh783yzVlHdnUH
 
 
