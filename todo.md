@@ -8,3 +8,10 @@
     * [x] Попробовал подключиться к ```PostgreSQL```
 * [x] Insomnia установлен
 
+### Шаг 2. По общим ссылкам
+* [ ] http://golang-book.ru/
+* [ ] https://quii.gitbook.io/learn-go-with-tests/
+* [ ] Tour of Go
+
+### Шаг 3. По ключевым вопросам
+* ...
