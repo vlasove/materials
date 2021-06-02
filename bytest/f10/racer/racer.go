@@ -12,15 +12,15 @@ import (
 // 	return time.Since(start)
 // }
 
-var tenSecondsTimeout = 10 * time.Second
+var (
+	tenSecondsTimeout = 10 * time.Second
+)
 
 func ConfigurableRacer(a, b string, timeout time.Duration) (winner string, error error) {
 	select {
-	case val := <-ping(a):
-		fmt.Println(val)
+	case <-ping(a):
 		return a, nil
-	case val := <-ping(b):
-		fmt.Println(val)
+	case <-ping(b):
 		return b, nil
 	case <-time.After(timeout):
 		return "", fmt.Errorf("timed out waiting for %s and %s", a, b)
