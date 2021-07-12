@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 
-	"github.com/vlasove/materials/tasks/task19"
+	tasky "github.com/vlasove/materials/tasks/taskY"
 )
 
 var (
@@ -171,7 +171,7 @@ func main() {
 	/*
 		=============    Task 19  start    =========================
 	*/
-	task19.Start()
+	//task19.Start()
 	/*
 		=============    Task 19  end    =========================
 	*/
@@ -296,4 +296,6 @@ func main() {
 		=============    Task 34  end    =========================
 	*/
 	//quests.Start()
+
+	tasky.Start()
 }

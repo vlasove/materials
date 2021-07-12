@@ -13,7 +13,11 @@ func someAction(v []int8, b int8) {
 
 // Start ...
 func Start() {
-	var a = []int8{1, 2, 3, 4, 5}
+	a := make([]int8, 10)
+	for i := 0; i < 5; i++ {
+		a[i] = int8(i) + 1
+	}
+
 	someAction(a, 6)
 
 	fmt.Println(a)
