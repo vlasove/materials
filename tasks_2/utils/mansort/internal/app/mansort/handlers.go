@@ -115,7 +115,7 @@ type alreadySortedChecker struct {
 }
 
 func (a *alreadySortedChecker) execute(m *ManSort) {
-	if m.alreaySortedDone {
+	if m.alreadySortedDone {
 		return
 	}
 	if !m.options.alreadySorted {

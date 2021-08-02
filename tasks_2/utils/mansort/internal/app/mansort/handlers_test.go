@@ -1,6 +1,7 @@
 package mansort
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -121,9 +122,122 @@ func TestMansort_UniqueSanitizerHandler(t *testing.T) {
 		})
 	}
 }
-func TestMansort_AlreadySortedCheckerHandler(t *testing.T) {
+func TestMansort_TailsCheckerHandler(t *testing.T) {
+	ms := &ManSort{
+		options: Options{
+			ignoreTails: true,
+		},
+	}
+	mockFinish := &finisher{}
+	tailsHandler := &tailsChecker{}
+	tailsHandler.setNext(mockFinish)
+
+	testCases := []struct {
+		name     string
+		data     []string
+		expected []string
+	}{
+		{
+			name:     "with spaces",
+			data:     []string{"  a", " b ", "c  "},
+			expected: []string{"a", "b", "c"},
+		},
+		{
+			name:     "without spaces",
+			data:     []string{"a", "b", "c"},
+			expected: []string{"a", "b", "c"},
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			ms.ignoreTailsDone = false
+			ms.data = test.data
+
+			tailsHandler.execute(ms)
+			if !reflect.DeepEqual(ms.data, test.expected) {
+				t.Errorf("got %v want %v", ms.data, test.expected)
+			}
+		})
+	}
 
 }
-func TestMansort_TailsCheckerHandler(t *testing.T)   {}
-func TestMansort_NumColSorterHandler(t *testing.T)   {}
-func TestMansort_MonthColSorterHandler(t *testing.T) {}
+func TestMansort_NumColSorterHandler(t *testing.T) {
+	ms := &ManSort{}
+	mockFinish := &finisher{}
+	numColHandler := &numColSorter{}
+	numColHandler.setNext(mockFinish)
+
+	testCases := []struct {
+		name     string
+		colNum   int
+		data     []string
+		expected []string
+	}{
+		{
+			name:     "all samples valid",
+			colNum:   1,
+			data:     []string{"a 5", "b 3", "c 1"},
+			expected: []string{"c 1", "b 3", "a 5"},
+		},
+		{
+			name:     "invalid sort",
+			colNum:   0,
+			data:     []string{"a 5", "b 3", "c 1"},
+			expected: []string{"a 5", "b 3", "c 1"},
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			ms.options.numColSort = test.colNum
+			ms.numColSortDone = false
+			ms.data = test.data
+
+			numColHandler.execute(ms)
+			if !reflect.DeepEqual(ms.data, test.expected) {
+				t.Errorf("got %v want %v", ms.data, test.expected)
+			}
+		})
+	}
+}
+func TestMansort_MonthColSorterHandler(t *testing.T) {
+	ms := &ManSort{}
+	mockFinish := &finisher{}
+	monthColHandler := &monthColSorter{}
+	monthColHandler.setNext(mockFinish)
+
+	testCases := []struct {
+		name     string
+		monthCol int
+		data     []string
+		expected []string
+	}{
+		{
+			name:     "valid month col",
+			monthCol: 1,
+			data:     []string{"Вася авг", "Маша янв", "Тест дек"},
+			expected: []string{"Маша янв", "Вася авг", "Тест дек"},
+		},
+		{
+			name:     "invalid month col",
+			monthCol: 0,
+			data:     []string{"Вася авг", "Маша янв", "Тест дек"},
+			expected: []string{"Вася авг", "Маша янв", "Тест дек"},
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			ms.options.monthColNum = test.monthCol
+			ms.monthColSortDone = false
+			ms.data = test.data
+
+			monthColHandler.execute(ms)
+
+			if !reflect.DeepEqual(ms.data, test.expected) {
+				t.Errorf("got %v want %v", ms.data, test.expected)
+			}
+		})
+	}
+}

@@ -16,7 +16,7 @@ type ManSort struct {
 	keyColumnSortDone  bool
 	reverseDataDone    bool
 	uniqueSanitizeDone bool
-	alreaySortedDone   bool
+	alreadySortedDone  bool
 	ignoreTailsDone    bool
 	numColSortDone     bool
 	monthColSortDone   bool
