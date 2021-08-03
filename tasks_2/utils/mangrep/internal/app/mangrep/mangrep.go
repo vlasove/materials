@@ -48,6 +48,7 @@ func (m *ManGrep) ApplyOptions(options ...Option) *ManGrep {
 	return m
 }
 
+// Search ...
 func (m *ManGrep) Search() error {
 	data, err := m.inputManager.Read()
 	if err != nil {

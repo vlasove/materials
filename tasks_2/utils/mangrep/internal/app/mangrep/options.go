@@ -8,6 +8,7 @@ var (
 	errNegativeSidesParam  = errors.New("mangrep: amount of CONTEXT can not be negative")
 )
 
+// Options ...
 type Options struct {
 	amountAfter      int
 	amountBefore     int
@@ -19,6 +20,7 @@ type Options struct {
 	isCounter        bool
 }
 
+// GetDefaultOptions ...
 func GetDefaultOptions() Options {
 	return Options{
 		isFixedTemplate:  false,
@@ -32,10 +34,13 @@ func GetDefaultOptions() Options {
 	}
 }
 
+// DefaultOptions ...
 var DefaultOptions = GetDefaultOptions()
 
+// Option ...
 type Option func(*Options) error
 
+// SetIgnoreCaseOption ...
 func SetIgnoreCaseOption(flag bool) Option {
 	return func(o *Options) error {
 		o.isIgnoreCase = flag
@@ -43,12 +48,15 @@ func SetIgnoreCaseOption(flag bool) Option {
 	}
 }
 
+// SetCounterOption ...
 func SetCounterOption(flag bool) Option {
 	return func(o *Options) error {
 		o.isCounter = flag
 		return nil
 	}
 }
+
+// SetFixedTemplateOption ...
 func SetFixedTemplateOption(flag bool) Option {
 	return func(o *Options) error {
 		o.isFixedTemplate = flag
@@ -56,6 +64,7 @@ func SetFixedTemplateOption(flag bool) Option {
 	}
 }
 
+// SetNumLinePrintedOption ...
 func SetNumLinePrintedOption(flag bool) Option {
 	return func(o *Options) error {
 		o.isNumLinePrinted = flag
@@ -63,6 +72,7 @@ func SetNumLinePrintedOption(flag bool) Option {
 	}
 }
 
+// SetInversionOption ...
 func SetInversionOption(flag bool) Option {
 	return func(o *Options) error {
 		o.isInversion = flag
@@ -70,6 +80,7 @@ func SetInversionOption(flag bool) Option {
 	}
 }
 
+// SetAmountLinesPrintedAfterOption ...
 func SetAmountLinesPrintedAfterOption(amount int) Option {
 	return func(o *Options) error {
 		if amount < 0 {
@@ -80,6 +91,7 @@ func SetAmountLinesPrintedAfterOption(amount int) Option {
 	}
 }
 
+// SetAmountLinesPrintedBeforeOption ...
 func SetAmountLinesPrintedBeforeOption(amount int) Option {
 	return func(o *Options) error {
 		if amount < 0 {
@@ -90,6 +102,7 @@ func SetAmountLinesPrintedBeforeOption(amount int) Option {
 	}
 }
 
+// SetAmountLinesPrintedSidesOption ...
 func SetAmountLinesPrintedSidesOption(amount int) Option {
 	return func(o *Options) error {
 		if amount < 0 {
