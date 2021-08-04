@@ -72,6 +72,9 @@ func (s *ShellTerminal) Start() error {
 		case "kill":
 			killExecutor := &shell.KillProcessExecutor{}
 			s.shell.SetExecutor(killExecutor)
+		case "fork":
+			forkExecutor := &shell.ForkExecutor{}
+			s.shell.SetExecutor(forkExecutor)
 		default:
 			fmt.Fprintln(s.writer, "shell: unkown command")
 		}
