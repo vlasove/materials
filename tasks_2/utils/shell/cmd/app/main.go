@@ -60,40 +60,10 @@ func main() {
 		showVersionAndExit(0)
 	}
 
-	// args := flag.Args()
-	// if len(args) < 1 {
-	// 	showUsageAndExit(1)
-	// }
-
 	s := shell.New()
 	commander := command.New(s, os.Stdout, os.Stdin)
 	if err := commander.Start(); err != nil {
 		log.Fatal(err)
 	}
 
-	// switch args[0] {
-	// case "cd":
-	// 	cdExecutor := &shell.CDExecutor{}
-	// 	s.SetExecutor(cdExecutor)
-	// case "echo":
-	// 	echoExecutor := &shell.EchoExecutor{}
-	// 	s.SetExecutor(echoExecutor)
-	// case "ps":
-	// 	psExecutor := &shell.PSExecutor{}
-	// 	s.SetExecutor(psExecutor)
-	// case "pwd":
-	// 	pwdExecutor := &shell.PWDExecutor{}
-	// 	s.SetExecutor(pwdExecutor)
-	// case "kill":
-	// 	killExecutor := &shell.KillProcessExecutor{}
-	// 	s.SetExecutor(killExecutor)
-	// default:
-	// 	log.Fatal(errUnapropriateFlagProvided)
-	// }
-
-	// res, err := s.Start()
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// log.Println(res)
 }

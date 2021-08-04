@@ -13,20 +13,24 @@ import (
 )
 
 var (
+	// ShellTerminalPrefix ...
 	ShellTerminalPrefix = `vlasove@shell:~`
-	ShellExitCommand    = `\exit`
-	errConsoleInput     = errors.New("shell: can not read data")
-	errPrefixBuildFail  = errors.New("shell: can not check current directory place")
-	errBadUser          = errors.New("shell: can not get current user info")
-	successExitMessage  = "shell: success exit. Bye."
+	// ShellExitCommand ...
+	ShellExitCommand   = `\exit`
+	errConsoleInput    = errors.New("shell: can not read data")
+	errPrefixBuildFail = errors.New("shell: can not check current directory place")
+	errBadUser         = errors.New("shell: can not get current user info")
+	successExitMessage = "shell: success exit. Bye."
 )
 
+// ShellTerminal ...
 type ShellTerminal struct {
 	shell  *shell.Shell
 	reader io.Reader
 	writer io.Writer
 }
 
+// New ...
 func New(shell *shell.Shell, reader io.Reader, writer io.Writer) *ShellTerminal {
 	return &ShellTerminal{
 		shell:  shell,
@@ -35,6 +39,7 @@ func New(shell *shell.Shell, reader io.Reader, writer io.Writer) *ShellTerminal 
 	}
 }
 
+// Start ...
 func (s *ShellTerminal) Start() error {
 	fmt.Fprintln(s.writer, `ПРОСТЕЙШИЙ SHELL. ДЛЯ ВЫХОДА ИСПОЛЬЗУЙТЕ \exit`)
 	scanner := bufio.NewScanner(s.reader)

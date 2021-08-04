@@ -13,17 +13,19 @@ import (
 
 var (
 	errEmptyEcho         = errors.New("shell: echo should have some data")
-	errDifferentPlatform = errors.New("shell: this command works only on UNIX system")
 	errNeedProcess       = errors.New("shell: kill command needs name of process")
 	errCanNotKillProcess = errors.New("shell: this process can not be killed")
 )
 
+// Executor ...
 type Executor interface {
 	Execute(s *Shell) (string, error)
 }
 
+// CDExecutor ...
 type CDExecutor struct{}
 
+// Execute ...
 func (c *CDExecutor) Execute(s *Shell) (string, error) {
 	// сброс до домашнего каталога
 	if len(s.Args) == 1 {
@@ -45,8 +47,10 @@ func (c *CDExecutor) Execute(s *Shell) (string, error) {
 	return "Successfully changed dir", nil
 }
 
+// EchoExecutor ...
 type EchoExecutor struct{}
 
+// Execute ...
 func (e *EchoExecutor) Execute(s *Shell) (string, error) {
 	// если аргумент не передан
 	if len(s.Args) == 1 {
@@ -55,8 +59,10 @@ func (e *EchoExecutor) Execute(s *Shell) (string, error) {
 	return s.Args[1], nil
 }
 
+// PSExecutor ...
 type PSExecutor struct{}
 
+// Execute ...
 func (p *PSExecutor) Execute(s *Shell) (string, error) {
 	processes, err := ps.Processes()
 	if err != nil {
@@ -74,8 +80,10 @@ func (p *PSExecutor) Execute(s *Shell) (string, error) {
 	return builder.String(), nil
 }
 
+// PWDExecutor ...
 type PWDExecutor struct{}
 
+// Execute ...
 func (p *PWDExecutor) Execute(s *Shell) (string, error) {
 	path, err := os.Getwd()
 	if err != nil {
@@ -84,8 +92,10 @@ func (p *PWDExecutor) Execute(s *Shell) (string, error) {
 	return "Current work dir :" + path, err
 }
 
+// KillProcessExecutor ...
 type KillProcessExecutor struct{}
 
+// Execute ...
 func (k *KillProcessExecutor) Execute(s *Shell) (string, error) {
 	// проверим, что есть , что убивать
 	if len(s.Args) < 2 {
