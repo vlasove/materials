@@ -68,7 +68,7 @@ func main() {
 
 	url := args[0]
 	dm := managers.New(url)
-	wget := wget.New(dm)
+	wget := wget.New(url, dm)
 
 	res, err := wget.Parse()
 	if err != nil {

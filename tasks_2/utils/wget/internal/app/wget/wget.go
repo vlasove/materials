@@ -14,13 +14,15 @@ var (
 
 // WGet ...
 type WGet struct {
-	manager *managers.DirectoryManager
+	manager managers.Manager
+	BaseURL string
 }
 
 // New ...
-func New(manager *managers.DirectoryManager) *WGet {
+func New(url string, manager managers.Manager) *WGet {
 	return &WGet{
 		manager: manager,
+		BaseURL: url,
 	}
 }
 
@@ -37,7 +39,7 @@ func (w *WGet) Parse() (*http.Response, error) {
 		},
 	}
 
-	res, err := client.Get(w.manager.BaseURL)
+	res, err := client.Get(w.BaseURL)
 	if err != nil {
 		return nil, errHTTPGetBad
 	}
