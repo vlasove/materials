@@ -42,12 +42,7 @@ func (c *CDExecutor) Execute(s *Shell) (string, error) {
 
 	}
 
-	// отдаем путь до полученной директории
-	p, err := os.Getwd()
-	if err != nil {
-		return "", err
-	}
-	return "Current Dir: " + p, nil
+	return "Successfully changed dir", nil
 }
 
 type EchoExecutor struct{}

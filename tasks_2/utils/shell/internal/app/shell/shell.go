@@ -5,10 +5,12 @@ type Shell struct {
 	Executor Executor
 }
 
-func New(args []string) *Shell {
-	return &Shell{
-		Args: args,
-	}
+func New() *Shell {
+	return &Shell{}
+}
+
+func (s *Shell) SetArgs(args []string) {
+	s.Args = args
 }
 
 func (s *Shell) SetExecutor(e Executor) {
