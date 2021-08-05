@@ -48,7 +48,7 @@ func init() {
 
 func usage() {
 	log.Printf(`ПРОСТАЯ УТИЛИТА ДЛЯ СОРТИРОВКИ СТРОК
-ИСПОЛЬЗОВАНИЕ: ./mansort [OPTIONS] <path_to_input.txt>
+ИСПОЛЬЗОВАНИЕ: ./mansort [OPTIONS]
 ДОСТУПНЫЕ ОПЦИИ:`)
 	flag.PrintDefaults()
 }
