@@ -1,0 +1,228 @@
+2021/08/05 15:14:20 logger configurated successfully
+2021/08/05 15:14:20 router configurated successfully
+2021/08/05 15:14:32 logger configurated successfully
+2021/08/05 15:14:32 router configurated successfully
+2021/08/05 15:14:32 starting api server at port: :8080
+2021/08/05 17:21:58 logger configurated successfully
+2021/08/05 17:21:58 database configurated successfully
+2021/08/05 17:22:13 logger configurated successfully
+2021/08/05 17:22:13 database configurated successfully
+2021/08/05 17:22:13 router configurated successfully
+2021/08/05 17:22:13 starting api server at port: :8080
+2021/08/05 17:23:03 logger configurated successfully
+2021/08/05 17:23:03 database configurated successfully
+2021/08/05 17:23:03 router configurated successfully
+2021/08/05 17:23:03 starting api server at port: :8080
+2021/08/05 17:23:34 started POST /create_event
+2021/08/05 17:23:34 completed with 404 Not Found in 57.14µs
+2021/08/05 17:24:40 started POST /create_event
+2021/08/05 17:24:40 completed with 404 Not Found in 23.418µs
+2021/08/05 17:26:05 started POST /create_event
+2021/08/05 17:26:05 completed with 404 Not Found in 24.45µs
+2021/08/05 17:26:48 logger configurated successfully
+2021/08/05 17:26:48 database configurated successfully
+2021/08/05 17:26:48 router configurated successfully
+2021/08/05 17:26:48 starting api server at port: :8080
+2021/08/05 17:26:51 started POST /create_event
+2021/08/05 17:26:51 completed with 404 Not Found in 45.707µs
+2021/08/05 17:27:02 started POST /create_events
+2021/08/05 17:27:02 completed with 404 Not Found in 48.993µs
+2021/08/05 17:41:36 logger configurated successfully
+2021/08/05 17:41:36 database configurated successfully
+2021/08/05 17:41:36 router configurated successfully
+2021/08/05 17:41:36 starting api server at port: :8080
+2021/08/05 17:42:48 logger configurated successfully
+2021/08/05 17:42:48 database configurated successfully
+2021/08/05 17:42:48 router configurated successfully
+2021/08/05 17:42:48 starting api server at port: :8080
+2021/08/05 17:42:51 started POST /create_events
+2021/08/05 17:42:51 &{0xc00000e150 <nil> <nil> false true {0 0} false false false 0x647ae0}
+2021/08/05 17:42:51 completed with 400 Bad Request in 192.818µs
+2021/08/05 17:43:21 started POST /create_event
+2021/08/05 17:43:21 &{0xc00000e228 <nil> <nil> false true {0 0} false false false 0x647ae0}
+2021/08/05 17:43:21 completed with 400 Bad Request in 1.602632ms
+2021/08/05 17:45:47 started POST /create_event
+2021/08/05 17:45:47 &{0xc00000e2b8 <nil> <nil> false true {0 0} false false false 0x647ae0}
+2021/08/05 17:45:47 completed with 202 Accepted in 272.383µs
+2021/08/05 17:46:16 logger configurated successfully
+2021/08/05 17:46:16 database configurated successfully
+2021/08/05 17:46:16 router configurated successfully
+2021/08/05 17:46:16 starting api server at port: :8080
+2021/08/05 17:46:19 started POST /create_event
+2021/08/05 17:46:19 completed with 202 Accepted in 194.067µs
+2021/08/05 17:46:35 logger configurated successfully
+2021/08/05 17:46:35 database configurated successfully
+2021/08/05 17:46:35 router configurated successfully
+2021/08/05 17:46:35 starting api server at port: :8080
+2021/08/05 17:46:38 started POST /create_event
+2021/08/05 17:46:38 completed with 201 Created in 182.138µs
+2021/08/05 17:46:42 started POST /create_event
+2021/08/05 17:46:42 completed with 503 Service Unavailable in 300.365µs
+2021/08/05 17:47:00 started POST /create_event
+2021/08/05 17:47:00 completed with 201 Created in 156.988µs
+2021/08/05 17:47:04 started POST /create_event
+2021/08/05 17:47:04 completed with 400 Bad Request in 111.898µs
+2021/08/05 17:47:15 started POST /create_event
+2021/08/05 17:47:15 completed with 400 Bad Request in 141.461µs
+2021/08/05 17:47:23 started POST /create_event
+2021/08/05 17:47:23 completed with 400 Bad Request in 144.977µs
+2021/08/05 17:47:30 started POST /create_event
+2021/08/05 17:47:30 completed with 201 Created in 90.204µs
+2021/08/05 17:47:42 started POST /create_event
+2021/08/05 17:47:42 completed with 400 Bad Request in 100.674µs
+2021/08/05 18:07:07 logger configurated successfully
+2021/08/05 18:07:07 database configurated successfully
+2021/08/05 18:07:07 router configurated successfully
+2021/08/05 18:07:07 starting api server at port: :8080
+2021/08/05 18:07:32 started POST /update_event
+2021/08/05 18:07:32 completed with 400 Bad Request in 109.882µs
+2021/08/05 18:07:56 started POST /delete_event
+2021/08/05 18:07:56 completed with 400 Bad Request in 106.328µs
+2021/08/05 18:08:12 started POST /create_event
+2021/08/05 18:08:12 completed with 400 Bad Request in 166.972µs
+2021/08/05 18:08:19 started POST /create_event
+2021/08/05 18:08:19 completed with 201 Created in 93.146µs
+2021/08/05 18:09:09 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:09:09 completed with 400 Bad Request in 49.605µs
+2021/08/05 18:10:03 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:10:03 completed with 400 Bad Request in 44.209µs
+2021/08/05 18:10:14 logger configurated successfully
+2021/08/05 18:10:14 database configurated successfully
+2021/08/05 18:10:14 router configurated successfully
+2021/08/05 18:10:14 starting api server at port: :8080
+2021/08/05 18:10:17 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:10:17 completed with 400 Bad Request in 71.504µs
+2021/08/05 18:11:38 logger configurated successfully
+2021/08/05 18:11:38 database configurated successfully
+2021/08/05 18:11:38 router configurated successfully
+2021/08/05 18:11:38 starting api server at port: :8080
+2021/08/05 18:11:41 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:11:41 completed with 400 Bad Request in 71.829µs
+2021/08/05 18:13:46 logger configurated successfully
+2021/08/05 18:13:46 database configurated successfully
+2021/08/05 18:13:46 router configurated successfully
+2021/08/05 18:13:46 starting api server at port: :8080
+2021/08/05 18:13:49 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:13:49 completed with 400 Bad Request in 61.256µs
+2021/08/05 18:13:52 started GET /events_?date=2021-01-01
+2021/08/05 18:13:52 completed with 400 Bad Request in 70.529µs
+2021/08/05 18:13:57 started GET /?date=2021-01-01
+2021/08/05 18:13:57 completed with 400 Bad Request in 33.496µs
+2021/08/05 18:15:47 logger configurated successfully
+2021/08/05 18:15:47 database configurated successfully
+2021/08/05 18:15:47 router configurated successfully
+2021/08/05 18:15:47 starting api server at port: :8080
+2021/08/05 18:15:56 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:15:56 completed with 400 Bad Request in 65.641µs
+2021/08/05 18:16:05 started POST /create_event
+2021/08/05 18:16:05 completed with 201 Created in 367.28µs
+2021/08/05 18:16:47 logger configurated successfully
+2021/08/05 18:16:47 database configurated successfully
+2021/08/05 18:16:47 handler start
+2021/08/05 18:16:47 router configurated successfully
+2021/08/05 18:16:47 starting api server at port: :8080
+2021/08/05 18:19:53 logger configurated successfully
+2021/08/05 18:19:53 database configurated successfully
+2021/08/05 18:19:53 router configurated successfully
+2021/08/05 18:19:53 starting api server at port: :8080
+2021/08/05 18:19:58 started GET /events_for_day
+2021/08/05 18:19:58 completed with 400 Bad Request in 104.17µs
+2021/08/05 18:20:09 started POST /events_for_day
+2021/08/05 18:20:09 completed with 400 Bad Request in 43.896µs
+2021/08/05 18:20:19 started GET /events_for_day
+2021/08/05 18:20:19 completed with 400 Bad Request in 78.27µs
+2021/08/05 18:20:49 started GET /events_for_day
+2021/08/05 18:20:49 completed with 400 Bad Request in 48.71µs
+2021/08/05 18:20:49 started GET /favicon.ico
+2021/08/05 18:20:49 completed with 400 Bad Request in 72.149µs
+2021/08/05 18:21:32 logger configurated successfully
+2021/08/05 18:21:32 database configurated successfully
+2021/08/05 18:21:32 router configurated successfully
+2021/08/05 18:21:32 starting api server at port: :8080
+2021/08/05 18:21:46 started GET /events_for_day
+2021/08/05 18:21:46 completed with 400 Bad Request in 132.268µs
+2021/08/05 18:21:46 started GET /favicon.ico
+2021/08/05 18:21:46 completed with 400 Bad Request in 46.265µs
+2021/08/05 18:22:27 logger configurated successfully
+2021/08/05 18:22:27 database configurated successfully
+2021/08/05 18:22:27 router configurated successfully
+2021/08/05 18:22:27 starting api server at port: :8080
+2021/08/05 18:22:47 started POST /create_event
+2021/08/05 18:22:47 completed with 201 Created in 199.632µs
+2021/08/05 18:22:51 started POST /create_event
+2021/08/05 18:22:51 completed with 201 Created in 146.433µs
+2021/08/05 18:23:00 started POST /create_event
+2021/08/05 18:23:00 completed with 201 Created in 94.613µs
+2021/08/05 18:23:21 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:23:21 [2021-01-01]
+2021/08/05 18:23:21 http: superfluous response.WriteHeader call from github.com/vlasove/materials/tasks_2/utils/calendar/internal/app/apiserver.(*responseWriter).WriteHeader (responsewriter.go:14)
+2021/08/05 18:23:21 completed with 400 Bad Request in 903.81µs
+2021/08/05 18:23:56 logger configurated successfully
+2021/08/05 18:23:56 database configurated successfully
+2021/08/05 18:23:56 router configurated successfully
+2021/08/05 18:23:56 starting api server at port: :8080
+2021/08/05 18:24:04 started POST /create_event
+2021/08/05 18:24:04 completed with 201 Created in 166.528µs
+2021/08/05 18:24:07 started POST /create_event
+2021/08/05 18:24:07 completed with 201 Created in 121.668µs
+2021/08/05 18:24:11 started POST /create_event
+2021/08/05 18:24:11 completed with 201 Created in 158.269µs
+2021/08/05 18:24:15 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:24:15 [2021-01-01]
+2021/08/05 18:24:15 completed with 200 OK in 333.389µs
+2021/08/05 18:26:30 logger configurated successfully
+2021/08/05 18:26:30 database configurated successfully
+2021/08/05 18:26:30 router configurated successfully
+2021/08/05 18:26:30 starting api server at port: :8080
+2021/08/05 18:26:31 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:26:31 [2021-01-01]
+2021/08/05 18:26:31 completed with 200 OK in 327.451µs
+2021/08/05 18:26:51 started POST /create_event
+2021/08/05 18:26:51 completed with 201 Created in 175.246µs
+2021/08/05 18:27:01 started POST /create_event
+2021/08/05 18:27:01 completed with 201 Created in 105.306µs
+2021/08/05 18:27:08 started POST /create_event
+2021/08/05 18:27:08 completed with 201 Created in 245.045µs
+2021/08/05 18:27:12 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:27:12 [2021-01-01]
+2021/08/05 18:27:12 completed with 200 OK in 139.877µs
+2021/08/05 18:27:38 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:27:38 [2021-01-01]
+2021/08/05 18:27:38 completed with 200 OK in 160.566µs
+2021/08/05 18:27:53 started GET /events_for_week?date=2021-01-01
+2021/08/05 18:27:53 [2021-01-01]
+2021/08/05 18:27:53 completed with 200 OK in 437.889µs
+2021/08/05 18:28:02 started POST /create_event
+2021/08/05 18:28:02 completed with 201 Created in 93.197µs
+2021/08/05 18:28:07 started GET /events_for_week?date=2021-01-01
+2021/08/05 18:28:07 [2021-01-01]
+2021/08/05 18:28:07 completed with 200 OK in 435.61µs
+2021/08/05 18:28:21 started GET /events_for_month?date=2021-01-01
+2021/08/05 18:28:21 [2021-01-01]
+2021/08/05 18:28:21 completed with 200 OK in 182.957µs
+2021/08/05 18:28:45 started POST /delete_event
+2021/08/05 18:28:45 completed with 202 Accepted in 130.502µs
+2021/08/05 18:28:49 started GET /events_for_month?date=2021-01-01
+2021/08/05 18:28:49 [2021-01-01]
+2021/08/05 18:28:49 completed with 200 OK in 138.378µs
+2021/08/05 18:29:10 started POST /update_event
+2021/08/05 18:29:10 completed with 503 Service Unavailable in 140.64µs
+2021/08/05 18:29:24 started GET /events_for_week?date=2021-01-01
+2021/08/05 18:29:24 [2021-01-01]
+2021/08/05 18:29:24 completed with 200 OK in 943.344µs
+2021/08/05 18:29:27 started GET /events_for_month?date=2021-01-01
+2021/08/05 18:29:27 [2021-01-01]
+2021/08/05 18:29:27 completed with 200 OK in 151.383µs
+2021/08/05 18:29:41 started POST /delete_event
+2021/08/05 18:29:41 completed with 202 Accepted in 136.856µs
+2021/08/05 18:29:45 started GET /events_for_month?date=2021-01-01
+2021/08/05 18:29:45 [2021-01-01]
+2021/08/05 18:29:45 completed with 200 OK in 446.962µs
+2021/08/05 18:30:04 started POST /delete_event
+2021/08/05 18:30:04 completed with 202 Accepted in 118.893µs
+2021/08/05 18:30:12 started GET /events_for_month?date=2021-01-01
+2021/08/05 18:30:12 [2021-01-01]
+2021/08/05 18:30:12 completed with 200 OK in 111.324µs
+2021/08/05 18:30:20 started GET /events_for_day?date=2021-01-01
+2021/08/05 18:30:20 [2021-01-01]
+2021/08/05 18:30:20 completed with 200 OK in 112.935µs
