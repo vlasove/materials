@@ -6,7 +6,9 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/vlasove/materials/tasks_2/utils/calendar/internal/app/models"
@@ -14,9 +16,13 @@ import (
 )
 
 var (
-	errBadRequestByMethod    = errors.New("method not allowed for this url")
-	errQueryParamNotProvided = errors.New("should provided 'date' as YYYY-MM-DD")
-	errInvalidQueryDate      = errors.New("date should be YYYY-MM-DD")
+	errBadRequestByMethod     = errors.New("method not allowed for this url")
+	errQueryParamNotProvided  = errors.New("should provided 'date' as YYYY-MM-DD")
+	errInvalidQueryDate       = errors.New("date should be YYYY-MM-DD")
+	errNotProvidedIDInForm    = errors.New("request body should contains id:int")
+	errNotPovidedUserIDInForm = errors.New("request body should contains user_id:int")
+	errNotProvidedDateInForm  = errors.New("request body should conatains date:YYYY-MM-DD")
+	errNotProvidedInfoInForm  = errors.New("request body should contains info:string")
 )
 
 // APIServer ...
@@ -88,8 +94,17 @@ func (s *APIServer) configureRouter() http.Handler {
 func (s *APIServer) handleCreate() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			var eventR *models.EventRequest
-			if err := json.NewDecoder(r.Body).Decode(&eventR); err != nil {
+			if r.Header.Get("content-type") != "application/x-www-form-urlencoded" {
+				s.error(w, r, http.StatusUnsupportedMediaType, nil)
+				return
+			}
+			if err := r.ParseForm(); err != nil {
+				s.error(w, r, http.StatusBadRequest, err)
+				return
+			}
+
+			eventR, err := s.decodeFormCreate(r.Form)
+			if err != nil {
 				s.error(w, r, http.StatusBadRequest, err)
 				return
 			}
@@ -115,8 +130,17 @@ func (s *APIServer) handleCreate() http.HandlerFunc {
 func (s *APIServer) handleUpdate() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			var eventR *models.EventRequest
-			if err := json.NewDecoder(r.Body).Decode(&eventR); err != nil {
+			if r.Header.Get("content-type") != "application/x-www-form-urlencoded" {
+				s.error(w, r, http.StatusUnsupportedMediaType, nil)
+				return
+			}
+			if err := r.ParseForm(); err != nil {
+				s.error(w, r, http.StatusBadRequest, err)
+				return
+			}
+
+			eventR, err := s.decodeFormUpdate(r.Form)
+			if err != nil {
 				s.error(w, r, http.StatusBadRequest, err)
 				return
 			}
@@ -128,7 +152,7 @@ func (s *APIServer) handleUpdate() http.HandlerFunc {
 
 			event := models.NewEventFromRequest(eventR)
 			if err := s.store.EventRepository().UpdateEvent(event); err != nil {
-				s.error(w, r, 503, err)
+				s.error(w, r, http.StatusServiceUnavailable, err)
 				return
 			}
 
@@ -142,19 +166,25 @@ func (s *APIServer) handleUpdate() http.HandlerFunc {
 func (s *APIServer) handleDelete() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodPost {
-			var eventR *models.EventRequest
-			if err := json.NewDecoder(r.Body).Decode(&eventR); err != nil {
+			if r.Header.Get("content-type") != "application/x-www-form-urlencoded" {
+				s.error(w, r, http.StatusUnsupportedMediaType, nil)
+				return
+			}
+			if err := r.ParseForm(); err != nil {
 				s.error(w, r, http.StatusBadRequest, err)
 				return
 			}
-
-			if err := eventR.Validate(); err != nil {
-				s.error(w, r, http.StatusBadRequest, err)
+			val, ok := r.Form["id"]
+			if !ok {
+				s.error(w, r, http.StatusBadRequest, errNotProvidedIDInForm)
 				return
 			}
-
-			event := models.NewEventFromRequest(eventR)
-			if err := s.store.EventRepository().DeleteEvent(event); err != nil {
+			id, err := strconv.Atoi(val[0])
+			if err != nil {
+				s.error(w, r, http.StatusBadRequest, errNotProvidedIDInForm)
+				return
+			}
+			if err := s.store.EventRepository().DeleteEvent(id); err != nil {
 				s.error(w, r, 503, err)
 				return
 			}
@@ -185,7 +215,7 @@ func (s *APIServer) handleGetForDay() http.HandlerFunc {
 
 			events, err := s.store.EventRepository().GetEventsForDates(date[0], dateStringFuture)
 			if err != nil {
-				s.error(w, r, 503, err)
+				s.error(w, r, http.StatusServiceUnavailable, err)
 				return
 			}
 			s.respond(w, r, http.StatusOK, map[string]interface{}{"events": events})
@@ -214,7 +244,7 @@ func (s *APIServer) handleGetForWeek() http.HandlerFunc {
 
 			events, err := s.store.EventRepository().GetEventsForDates(date[0], dateStringFuture)
 			if err != nil {
-				s.error(w, r, 503, err)
+				s.error(w, r, http.StatusServiceUnavailable, err)
 				return
 			}
 			s.respond(w, r, http.StatusOK, map[string]interface{}{"events": events})
@@ -229,7 +259,6 @@ func (s *APIServer) handleGetForMonth() http.HandlerFunc {
 		if r.Method == http.MethodGet {
 			vals := r.URL.Query()
 			date, ok := vals["date"]
-			log.Println(date)
 			if !ok {
 				s.error(w, r, http.StatusBadRequest, errQueryParamNotProvided)
 				return
@@ -243,7 +272,7 @@ func (s *APIServer) handleGetForMonth() http.HandlerFunc {
 
 			events, err := s.store.EventRepository().GetEventsForDates(date[0], dateStringFuture)
 			if err != nil {
-				s.error(w, r, 503, err)
+				s.error(w, r, http.StatusServiceUnavailable, err)
 				return
 			}
 			s.respond(w, r, http.StatusOK, map[string]interface{}{"events": events})
@@ -262,4 +291,67 @@ func (s *APIServer) respond(w http.ResponseWriter, r *http.Request, code int, da
 	if data != nil {
 		_ = json.NewEncoder(w).Encode(data)
 	}
+}
+
+func (s *APIServer) decodeFormUpdate(form url.Values) (*models.EventRequest, error) {
+	eventR := new(models.EventRequest)
+	valID, ok := form["id"]
+	if !ok {
+		return nil, errNotProvidedIDInForm
+	}
+	id, err := strconv.Atoi(valID[0])
+	if err != nil {
+		return nil, errNotProvidedIDInForm
+	}
+	eventR.ID = id
+
+	valUserID, ok := form["userID"]
+	if !ok {
+		return nil, errNotPovidedUserIDInForm
+	}
+	userID, err := strconv.Atoi(valUserID[0])
+	if err != nil {
+		return nil, errNotPovidedUserIDInForm
+	}
+	eventR.UserID = userID
+
+	valDate, ok := form["date"]
+	if !ok {
+		return nil, errNotProvidedDateInForm
+	}
+	eventR.Date = valDate[0]
+
+	valInfo, ok := form["info"]
+	if !ok {
+		return nil, errNotProvidedInfoInForm
+	}
+	eventR.Info = valInfo[0]
+	return eventR, nil
+}
+
+func (s *APIServer) decodeFormCreate(form url.Values) (*models.EventRequest, error) {
+	eventR := new(models.EventRequest)
+
+	valUserID, ok := form["userID"]
+	if !ok {
+		return nil, errNotPovidedUserIDInForm
+	}
+	userID, err := strconv.Atoi(valUserID[0])
+	if err != nil {
+		return nil, errNotPovidedUserIDInForm
+	}
+	eventR.UserID = userID
+
+	valDate, ok := form["date"]
+	if !ok {
+		return nil, errNotProvidedDateInForm
+	}
+	eventR.Date = valDate[0]
+
+	valInfo, ok := form["info"]
+	if !ok {
+		return nil, errNotProvidedInfoInForm
+	}
+	eventR.Info = valInfo[0]
+	return eventR, nil
 }

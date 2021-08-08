@@ -6,10 +6,9 @@ import (
 )
 
 var (
-	errInvalidEventID = errors.New("event id should be positive integer")
-	errInvalidUserID  = errors.New("user_id should be positive integer")
-	errInvalidDate    = errors.New("date should be in YYYY-MM-DD format")
-	errInvalidInfo    = errors.New("info field is required and should has min 3 symbols")
+	errInvalidUserID = errors.New("user_id should be positive integer")
+	errInvalidDate   = errors.New("date should be in YYYY-MM-DD format")
+	errInvalidInfo   = errors.New("info field is required and should has min 3 symbols")
 )
 
 // EventRequest ...
@@ -22,9 +21,6 @@ type EventRequest struct {
 
 //Validate ...
 func (e *EventRequest) Validate() error {
-	if e.ID <= 0 {
-		return errInvalidEventID
-	}
 	if e.UserID <= 0 {
 		return errInvalidUserID
 	}
