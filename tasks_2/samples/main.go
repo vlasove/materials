@@ -1,6 +1,6 @@
 package main
 
-import "github.com/vlasove/materials/tasks_2/samples/task7"
+import "github.com/vlasove/materials/tasks_2/samples/task6"
 
 func main() {
 	// -------- TASK 1 started ------------
@@ -24,10 +24,10 @@ func main() {
 	// -------- TASK 5 finished -----------
 
 	// -------- TASK 6 started ------------
-	//task6.Start()
+	task6.Start()
 	// -------- TASK 6 finished -----------
 
 	// -------- TASK 7 started ------------
-	task7.Start()
+	//task7.Start()
 	// -------- TASK 7 finished -----------
 }

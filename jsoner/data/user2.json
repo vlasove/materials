@@ -1,0 +1,12 @@
+{
+    "login" : "alice",
+    "password" : "alice",
+    "email" : "alice@march.com",
+    "info" : {
+        "post_code" : 223344,
+        "city" : "LA",
+        "street" : "some street",
+        "building" : "43a/c",
+        "room" : 24
+    }
+}

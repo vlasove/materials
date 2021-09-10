@@ -1,25 +1,23 @@
 package hospital
 
-import "log"
-
 type Cashier struct {
-	Next Department
+	next Department
 }
 
 func NewCashier(next Department) *Cashier {
 	return &Cashier{
-		Next: next,
+		next: next,
 	}
 }
 
 func (c *Cashier) SetNext(next Department) {
-	c.Next = next
+	c.next = next
 }
 
 func (c *Cashier) Execute(p *Patient) {
-	if p.PaymentDone {
-		log.Println("payment done")
-		return
-	}
-	log.Println("cashier getting money from patient patient")
+	c.accept(generalVisitor, p)
+}
+
+func (c *Cashier) accept(v Visitor, p *Patient) {
+	v.visitForCashier(p)
 }

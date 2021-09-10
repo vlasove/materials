@@ -1,0 +1,3 @@
+nats_urls = "nats://demo.nats.io:4222"
+nats_subject = "go.blah"
+nats_name = "Simple NATS Subscriber"

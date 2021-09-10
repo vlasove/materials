@@ -1,0 +1,5 @@
+ClusterURLs = ["wbx-world-nats-stage.dp.wb.ru", "wbx-world-nats-stage.dl.wb.ru"]
+ClusterID = "world-nats-stage"
+ClientID = "VlasovEvgeniy8"
+Subject = "go.test"
+Name = "Simple NATS publisher by Vlasov.Evgeniy8"

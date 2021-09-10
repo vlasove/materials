@@ -1,0 +1,4 @@
+# nats_urls is comma-separated strings. Each for one nats server
+nats_urls = "nats://demo.nats.io:4222"
+nats_subject = "go.blah"
+nats_name = "simple NATS Publisher"

@@ -15,7 +15,7 @@ type Anagram struct {
 // SortNormal ...
 func SortNormal(word string) string {
 	parts := strings.Split(word, "")
-	sort.Strings(parts)
+	sort.Strings(parts) // сложность? O(nlogn)
 	return strings.Join(parts, "")
 }
 
@@ -23,13 +23,13 @@ func SortNormal(word string) string {
 func Find(words []string) []*Anagram {
 	buckets := map[string][]string{}
 
-	for _, w := range words {
-		normal := SortNormal(w)
-		buckets[normal] = append(buckets[normal], w)
-	}
+	for _, w := range words { // k
+		normal := SortNormal(w)                      //	nlogn
+		buckets[normal] = append(buckets[normal], w) //~1
+	} // k * nlogn * 1 -> kn logn
 
 	anas := []*Anagram{}
-	for _, ws := range buckets {
+	for _, ws := range buckets { //n
 		if len(ws) == 1 {
 			continue
 		}
@@ -38,10 +38,14 @@ func Find(words []string) []*Anagram {
 			Words:  ws,
 			Normal: ws[0],
 		}
-		sort.Strings(a.Words)
-		anas = append(anas, a)
+		sort.Strings(a.Words)  // n logn
+		anas = append(anas, a) // ~1
 	}
+	// n^2logn
 
+	//2*n^2logn - общая сложность, через Counter получится n^2*logn
+	// т.к. там налогичая сложность унификации
+	// https://medium.com/@daetam/counter-in-golang-3ea3df1781f5
 	return anas
 }
 

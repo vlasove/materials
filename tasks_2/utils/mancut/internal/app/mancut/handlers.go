@@ -2,7 +2,6 @@ package mancut
 
 import (
 	"errors"
-	"log"
 	"strings"
 )
 
@@ -69,12 +68,12 @@ func (f *fieldsHandler) execute(m *ManCut) {
 			continue
 		}
 		samples := strings.Split(line, m.delimeter)
-		lenSamples := len(samples)
+		//lenSamples := len(samples)
 		prepared := []string{}
 		for _, fieldID := range m.options.fields {
-			if fieldID+1 > lenSamples {
-				log.Fatal(errInvalidFieldPosition)
-			}
+			// if fieldID+1 > lenSamples {
+			// 	log.Fatal(errInvalidFieldPosition)
+			// }
 			prepared = append(prepared, samples[fieldID])
 		}
 		preparedString := strings.Join(prepared, m.delimeter)

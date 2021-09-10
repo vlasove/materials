@@ -127,6 +127,7 @@ func (k *KillProcessExecutor) Execute(s *Shell) (string, error) {
 type ForkExecutor struct{}
 
 // Execute ...
+// убрать чилды
 func (f *ForkExecutor) Execute(s *Shell) (string, error) {
 	if len(s.Args) < 2 {
 		return "", errForkNeedAmount

@@ -1,29 +1,25 @@
 package hospital
 
-import "log"
-
 // Конкретный обработчик - осмотр доктора
 type Doctor struct {
-	Next Department
+	next Department
 }
 
 func NewDoctor(next Department) *Doctor {
 	return &Doctor{
-		Next: next,
+		next: next,
 	}
 }
 
 func (d *Doctor) SetNext(next Department) {
-	d.Next = next
+	d.next = next
 }
 
 func (d *Doctor) Execute(p *Patient) {
-	if p.DoctorCheckUpDone {
-		log.Println("doctor checkup already done")
-		d.Next.Execute(p)
-		return
-	}
-	log.Println("doctor checking patient")
-	p.DoctorCheckUpDone = true
-	d.Next.Execute(p)
+	d.accept(generalVisitor, p)
+	d.next.Execute(p)
+}
+
+func (d *Doctor) accept(v Visitor, p *Patient) {
+	v.visitForDoctor(p)
 }

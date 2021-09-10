@@ -1,15 +1,16 @@
 package hospital
 
+// переделать на объект пациента
 type Patient struct {
-	Name              string
-	RegistrationDone  bool
-	DoctorCheckUpDone bool
-	MedicineDone      bool
-	PaymentDone       bool
+	name              string
+	registrationDone  bool
+	doctorCheckUpDone bool
+	medicineDone      bool
+	paymentDone       bool
 }
 
 func NewPatient(name string) *Patient {
 	return &Patient{
-		Name: name,
+		name: name,
 	}
 }

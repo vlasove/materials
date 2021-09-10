@@ -1,29 +1,25 @@
 package hospital
 
-import "log"
-
 // Конкретный обработчик - кабинет медикаментов
 type Medical struct {
-	Next Department
+	next Department
 }
 
 func NewMedical(next Department) *Medical {
 	return &Medical{
-		Next: next,
+		next: next,
 	}
 }
 
 func (m *Medical) SetNext(next Department) {
-	m.Next = next
+	m.next = next
 }
 
 func (m *Medical) Execute(p *Patient) {
-	if p.MedicineDone {
-		log.Println("medicine already given to patient")
-		m.Next.Execute(p)
-		return
-	}
-	log.Println("medical giving medicine to patient")
-	p.MedicineDone = true
-	m.Next.Execute(p)
+	m.accept(generalVisitor, p)
+	m.next.Execute(p)
+}
+
+func (m *Medical) accept(v Visitor, p *Patient) {
+	v.visitForMedical(p)
 }

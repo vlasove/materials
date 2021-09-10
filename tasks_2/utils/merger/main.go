@@ -5,30 +5,29 @@ import (
 	"time"
 )
 
-func or(channels ...<-chan interface{}) <-chan interface{} {
-	switch len(channels) {
+func or(channs ...<-chan interface{}) <-chan interface{} {
+	switch len(channs) {
 	case 0:
 		return nil
 	case 1:
-		return channels[0]
+		return channs[0]
 	}
-
 	orDone := make(chan interface{})
 	go func() {
 		defer close(orDone)
 
-		switch len(channels) {
+		switch len(channs) {
 		case 2:
 			select {
-			case <-channels[0]:
-			case <-channels[1]:
+			case <-channs[0]:
+			case <-channs[1]:
 			}
 		default:
 			select {
-			case <-channels[0]:
-			case <-channels[1]:
-			case <-channels[2]:
-			case <-or(append(channels[3:], orDone)...):
+			case <-channs[0]:
+			case <-channs[1]:
+			case <-channs[2]:
+			case <-or(append(channs[3:], orDone)...):
 			}
 		}
 	}()

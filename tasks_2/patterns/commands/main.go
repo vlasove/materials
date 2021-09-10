@@ -3,8 +3,11 @@ package main
 import (
 	"log"
 
+	"github.com/vlasove/materials/tasks_2/patterns/commands/cafe"
 	"github.com/vlasove/materials/tasks_2/patterns/commands/tv"
 )
+
+// Очередь добавлена!
 
 func main() {
 	televisor := &tv.TV{}
@@ -50,4 +53,19 @@ func main() {
 		Command: offCommand,
 	}
 	offRemote.Press()
+
+	// очередь
+	coffix := cafe.New(25, 15)
+
+	queue := []cafe.Command{
+		coffix.MakeCapuccino(3),
+		coffix.MakeLatte(5),
+		coffix.MakeCapuccino(2),
+		coffix.MakeClean(),
+		coffix.MakeCapuccino(1),
+	}
+
+	for _, q := range queue {
+		q.Execute()
+	}
 }

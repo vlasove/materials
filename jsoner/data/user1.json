@@ -1,0 +1,12 @@
+{
+    "login" : "admin",
+    "password" : "admin",
+    "email" : "admin@admin.com",
+    "info" : {
+        "post_code" : 140013,
+        "city" : "Moscow",
+        "street" : "Volgogradksy prospect",
+        "building" : "123a",
+        "room" : 1234
+    }
+}

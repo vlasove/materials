@@ -2,8 +2,6 @@ package clock
 
 import (
 	"fmt"
-	"io"
-	"log"
 	"time"
 
 	"github.com/beevik/ntp"
@@ -14,25 +12,41 @@ const (
 	BaseHost = "0.beevik-ntp.pool.ntp.org"
 )
 
+// IClock ...
+type IClock interface {
+	CurrentTime() (time.Time, time.Time)
+	SetHost(string) error
+	String() string
+}
+
 // Clock - базовые часы
 type Clock struct {
-	writer      io.Writer
-	response    *ntp.Response
-	timePrecise time.Time
-	timeLocal   time.Time
-	host        string
+	response *ntp.Response
+	host     string
 }
 
-// New ...
-func New(host string, errorWriter io.Writer) *Clock {
-	return &Clock{
-		host:   host,
-		writer: errorWriter,
+// New ... + возврат ошибки
+func New(host string) (IClock, error) {
+	response, err := ntp.Query(host)
+	if err != nil {
+		return nil, err
 	}
+	return &Clock{
+		response: response,
+		host:     host,
+	}, nil
 }
 
-func (c *Clock) hostChecker() error {
-	response, err := ntp.Query(c.host)
+// CurrentTime returns precise and local time
+func (c *Clock) CurrentTime() (time.Time, time.Time) {
+	prec := time.Now().Add(c.response.ClockOffset)
+	loc := time.Now()
+	return prec, loc
+}
+
+// SetHost ...
+func (c *Clock) SetHost(host string) error {
+	response, err := ntp.Query(host)
 	if err != nil {
 		return err
 	}
@@ -40,18 +54,8 @@ func (c *Clock) hostChecker() error {
 	return nil
 }
 
-func (c *Clock) setCurrent() error {
-	if err := c.hostChecker(); err != nil {
-		return err
-	}
-	c.timePrecise = time.Now().Add(c.response.ClockOffset)
-	c.timeLocal = time.Now()
-	return nil
-}
-
+// String ...
 func (c *Clock) String() string {
-	if err := c.setCurrent(); err != nil {
-		log.Fatal(err)
-	}
-	return fmt.Sprintf("Precise:%v\nLocal:%v", c.timePrecise, c.timeLocal)
+	prec, cur := c.CurrentTime()
+	return fmt.Sprintf("Precise:%v\nLocal:%v", prec, cur)
 }

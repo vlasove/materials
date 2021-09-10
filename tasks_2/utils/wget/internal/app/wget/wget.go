@@ -27,6 +27,10 @@ func New(url string, manager managers.Manager) *WGet {
 }
 
 // Parse ...
+// паттерн транспортный уровень ->
+//		клиент делает вызов
+//		получает респонс и ошибку
+//		wget инкапсулирует Do клиента и отдает пользователю ответ
 func (w *WGet) Parse() (*http.Response, error) {
 	_, err := w.manager.Build()
 	if err != nil {

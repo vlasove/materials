@@ -9,6 +9,7 @@ import (
 	"github.com/vlasove/materials/tasks_2/utils/mancut/internal/app/mancut"
 )
 
+// SOLID + конфиги хендлеров
 const (
 	// Version ...
 	Version = "1.0.0 dev"

@@ -1,0 +1,12 @@
+{
+    "login" : "lupe",
+    "password" : "fernandes",
+    "email" : "little.lupe93@gmail.com",
+    "info" : {
+        "post_code" : 221133,
+        "city" : "California",
+        "street" : "some street at california",
+        "building" : "431dd21d",
+        "room" : 666
+    }
+}
